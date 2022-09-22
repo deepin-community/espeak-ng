@@ -1,0 +1,26 @@
+---
+ README.md |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/README.md
++++ b/README.md
+@@ -39,7 +39,7 @@ The following platforms are supported:
+ 
+ | Platform    | Minimum Version | Status |
+ |-------------|-----------------|--------|
+-| Linux       |                 | ![[Travis continuous integration builds on Linux](https://travis-ci.org/espeak-ng/espeak-ng)](https://secure.travis-ci.org/espeak-ng/espeak-ng.svg?branch=master) |
++| Linux       |                 | OK     |
+ | BSD         |                 |        |
+ | Android     | 4.0             |        |
+ | Windows     | Windows 8       |        |
+--- a/docs/building.md
++++ b/docs/building.md
+@@ -254,7 +254,7 @@ already have an espeak-ng install by run
+ 
+ ## Android
+ 
+-<div align="right"><a href="https://play.google.com/store/apps/details?id=com.reecedunn.espeak" title="eSpeak for Android on Google Play"><img src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png"/></a></div>
++<div align="right"><a href="https://play.google.com/store/apps/details?id=com.reecedunn.espeak" title="eSpeak for Android on Google Play">Android App on Google play</a></div>
+ 
+ The espeak-ng sources contain the code for the Android™ port of the application.
+ This is published as the [eSpeak for Android](http://reecedunn.co.uk/espeak-for-android)

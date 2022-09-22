@@ -1,0 +1,4 @@
+/usr/include/espeak-ng
+/usr/lib/*/libespeak-ng.a
+/usr/lib/*/libespeak-ng.so
+/usr/lib/*/pkgconfig

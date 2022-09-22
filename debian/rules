@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+include /usr/share/dpkg/architecture.mk
+DATADIR = /usr/lib/$(DEB_HOST_MULTIARCH)/espeak-ng-data
+
+%:
+	# The build doesn't work in parallel
+	dh $@ --no-parallel
+
+override_dh_autoreconf:
+	dh_autoreconf ./autogen.sh
+
+override_dh_auto_configure:
+	dh_auto_configure -- --with-extdict-ru --with-extdict-zh --with-extdict-zhy
+
+override_dh_auto_build:
+	dh_auto_build -- DATADIR=$(DATADIR)
+	LC_ALL=C.UTF-8 $(MAKE) docs
+
+override_dh_auto_install:
+	dh_auto_install -- DATADIR=$(DATADIR)
+
+override_dh_install:
+	dh_install
+	mkdir $(CURDIR)/debian/espeak-ng-data-udeb
+	[ ! -d $(CURDIR)/debian/espeak-ng-data/usr ] || cp -al $(CURDIR)/debian/espeak-ng-data/usr $(CURDIR)/debian/espeak-ng-data-udeb
+	rm -fr $(CURDIR)/debian/espeak-ng-data-udeb/usr/share

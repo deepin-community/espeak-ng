@@ -1,0 +1,133 @@
+Source: espeak-ng
+Section: sound
+Priority: optional
+Maintainer: Debian Accessibility Team <pkg-a11y-devel@alioth-lists.debian.net>
+Uploaders: Samuel Thibault <sthibault@debian.org>
+Vcs-Browser: https://salsa.debian.org/a11y-team/espeak-ng
+Vcs-Git: https://salsa.debian.org/a11y-team/espeak-ng.git
+Homepage: https://github.com/espeak-ng/espeak-ng
+Build-Depends: debhelper-compat (= 12), dh-exec,
+ libpcaudio-dev, libsonic-dev,
+ ronn, kramdown
+Rules-Requires-Root: no
+Standards-Version: 4.5.0
+
+Package: espeak-ng
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Multi-lingual software speech synthesizer
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ eSpeak NG produces good quality English speech. It uses a different synthesis
+ method from other open source text to speech (TTS) engines, and sounds quite
+ different. It's perhaps not as natural or "smooth", but some find the
+ articulation clearer and easier to listen to for long periods.
+ .
+ It can run as a command line program to speak text from a file or from stdin.
+ .
+   * Includes different Voices, whose characteristics can be altered.
+   * Can produce speech output as a WAV file.
+   * Can translate text to phoneme codes, so it could be adapted as a front end
+     for another speech synthesis engine.
+   * Potential for other languages. More than 80 languages are included.
+   * Compact size.
+   * Written in C.
+
+Package: espeak-ng-espeak
+Architecture: all
+Multi-Arch: foreign
+Provides: espeak
+Conflicts: espeak
+Depends: ${shlibs:Depends}, espeak-ng, ${misc:Depends}
+Description: Multi-lingual software speech synthesizer
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ This package contains compatibility links that makes it a drop-in replacement
+ for the espeak package.  Installing this package thus allows one to make
+ applications calling the /usr/bin/espeak program use eSpeak NG without any
+ modification or rebuild.
+
+Package: espeak-ng-data
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}
+Description: Multi-lingual software speech synthesizer: speech data files
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ This package contains necessary synthesizer data files needed
+ for the espeak-ng program and the shared library.
+
+Package: espeak-ng-data-udeb
+Section: debian-installer
+Architecture: any
+Depends: ${misc:Depends}
+Package-Type: udeb
+Description: Multi-lingual software speech synthesizer: data for d-i
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ This package contains necessary synthesizer data files needed
+ for the espeak-ng program, and the shared library, packed for the Debian
+ Installer.
+
+Package: libespeak-ng1
+Architecture: any
+Section: libs
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, espeak-ng-data (= ${binary:Version})
+Description: Multi-lingual software speech synthesizer: shared library
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ This package contains the espeak NG program in a shared library.
+
+Package: libespeak-ng-libespeak1
+Architecture: any
+Section: libs
+Multi-Arch: same
+Provides: libespeak1 (= 1.48.04+dfsg)
+Conflicts: libespeak1
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libespeak-ng1 (= ${binary:Version})
+Description: Multi-lingual software speech synthesizer: shared library
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ This package contains compatibility links that makes it a drop-in replacement
+ for the libespeak1 package.  Installing this package thus allows one to make
+ applications linked against libespeak1 use eSpeak NG without any modification
+ or rebuild.
+
+Package: libespeak-ng-dev
+Architecture: any
+Section: libdevel
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, libespeak-ng1 (= ${binary:Version})
+Description: Multi-lingual software speech synthesizer: development files
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ This package contains the eSpeak NG development files needed to
+ build against the espeak-ng shared library.
+
+Package: libespeak-ng-libespeak-dev
+Architecture: any
+Section: libdevel
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Provides: libespeak-dev (= 1.48.04+dfsg)
+Conflicts: libespeak-dev
+Depends: ${misc:Depends}, libespeak-ng-dev (= ${binary:Version})
+Description: Multi-lingual software speech synthesizer: development files
+ eSpeak NG is a software speech synthesizer for English, and some other
+ languages.
+ .
+ This package contains compatibility links that makes it a drop-in replacement
+ for the libespeak-dev package.  Building against this package thus allows one
+ to migrate to using eSpeak NG without any source code change.
